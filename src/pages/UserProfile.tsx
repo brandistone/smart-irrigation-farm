@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Api from '../Api'
+
+const BASE_URL = "http://192.168.1.103:8000"
 
 const UserProfile = () => {
     const [formData, setFormData] = useState({
@@ -21,11 +24,8 @@ const UserProfile = () => {
         e.preventDefault();
         try {
           // Adjust the URL to match your backend server
-          const response = await axios.post('http://localhost:5000/api/profiles', formData, {
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
+          console.log(formData)
+          const res = await Api.post(BASE_URL +'/api/profile/create/', formData);
           
           // Success handling
           alert('Profile submitted successfully!');
