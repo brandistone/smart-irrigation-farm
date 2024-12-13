@@ -25,7 +25,7 @@ const UserProfile = () => {
         try {
           // Adjust the URL to match your backend server
           console.log(formData)
-          const res = await Api.post(BASE_URL +'/api/profile/create/', formData);
+          const res = await Api.post(BASE_URL +'/api/create/profile/', formData);
           
           // Success handling
           alert('Profile submitted successfully!');
