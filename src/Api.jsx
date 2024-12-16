@@ -1,10 +1,10 @@
 import axios from "axios";
 import { ACCESS_TOKEN } from "./conatants";
 
-const apiUrl = "/choreo-apis/awbo/backend/rest-api-be2/v1.0";
+// const apiUrl = "/choreo-apis/awbo/backend/rest-api-be2/v1.0";
 
 const api = axios.create({
-  baseURL: "http://192.168.1.103/",
+  baseURL: "http://192.168.0.104/",
 });
 
 api.interceptors.request.use(

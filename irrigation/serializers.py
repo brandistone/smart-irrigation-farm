@@ -4,7 +4,12 @@ from .models import UserProfile
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ['username', 'email', 'password', 'confirm_password', 'phone', 'fullname', 'date_of_birth', 'country', 'address', 'profile_picture']
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'confirm_password': {'write_only': True},
+        }
+
 
     def create(self, validated_data):
         print("Validated data:", validated_data)
@@ -15,31 +20,27 @@ class UserProfileSerializer(serializers.ModelSerializer):
         except Exception as e:
             print("Error during user creation:", str(e))
             raise serializers.ValidationError({"error": "User creation failed", "details": str(e)})
-    
 
-class UserProfileSerializer1(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = [
-            # 'id', 
-            'name', 
-            'email', 
-            'phone', 
-            'country', 
-            'farm_size',
-            'created_at',
-            'updated_at'
-        ]
-    
-    # Custom Validation
-    def validate_email(self, value):
-        # Check if email already exists
-        if UserProfile.objects.filter(email=value).exists():
-            raise serializers.ValidationError("A profile with this email already exists.")
-        return value
-    
-    def validate_phone(self, value):
-        # Additional phone number validation if needed
-        if not value.startswith('+'):
-            raise serializers.ValidationError("Phone number should start with country code (+)")
-        return value
+    def validate(self, data):
+        # Check if the email already exists
+        email = data.get('email')
+        if UserProfile.objects.filter(email=email).exists():
+            raise serializers.ValidationError("A user with this email already exists.")
+
+        # Check if the phone number already exists
+        phone = data.get('phone')
+        if UserProfile.objects.filter(phone=phone).exists():
+            raise serializers.ValidationError("A user with this phone number already exists.")
+
+        # Check if the username already exists
+        username = data.get('username')
+        if UserProfile.objects.filter(username=username).exists():
+            raise serializers.ValidationError("A user with this username already exists.")
+        
+        # Validate password confirmation
+        password = data.get('password')
+        confirm_password = data.get('confirm_password')
+        if password != confirm_password:
+            raise serializers.ValidationError("Passwords do not match.")
+        
+        return data

@@ -19,7 +19,7 @@ export const UserProfileService = {
         phone: string
     }) => {
         try {
-            const response = await apiClient.post('/profiles/', userData);
+            const response = await apiClient.post('/profile/', userData);
             return response.data;
         } catch (error) {
             console.error('Error creating profile:', error);
@@ -34,7 +34,7 @@ export const UserProfileService = {
         phone?: string
     }) => {
         try {
-            const response = await apiClient.patch(`/profiles/${profileId}/`, userData);
+            const response = await apiClient.patch(`/profile/${profileId}/`, userData);
             return response.data;
         } catch (error) {
             console.error('Error updating profile:', error);
@@ -45,7 +45,7 @@ export const UserProfileService = {
     // Get User Profile
     getProfile: async (profileId: number) => {
         try {
-            const response = await apiClient.get(`/profiles/${profileId}/`);
+            const response = await apiClient.get(`/profile/${profileId}/`);
             return response.data;
         } catch (error) {
             console.error('Error fetching profile:', error);

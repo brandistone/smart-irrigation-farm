@@ -8,6 +8,7 @@ from .views import UserProfileViewSet, ProfileCreateView, ProfileDetailView
 
 urlpatterns = [
     path('profile/create/', ProfileCreateView.as_view(), name='profile-create'),
+    
     # path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile-detail'),
 ]
 
