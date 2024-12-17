@@ -9,7 +9,7 @@ const UserProfile = () => {
         fullname: '',
         username: '',
         password: '',
-        confirm_password: '',
+        //confirm_password: '',
         phonenumber: '',
         email: '',
         county: '',
@@ -62,7 +62,7 @@ const UserProfile = () => {
                 fullname: '',
                 username: '',
                 password: '',
-                confirm_password: '',
+                //confirm_password: '',
                 phonenumber: '',
                 email: '',
                 county: '',
@@ -125,7 +125,7 @@ const UserProfile = () => {
                     />
                 </div>
 
-                {/* Confirm Password */}
+                {/* Confirm Password 
                 <div className="mb-4">
                     <label htmlFor="confirm_password" className="block text-lg font-semibold text-gray-700 mb-2">Confirm Password</label>
                     <input
@@ -138,6 +138,7 @@ const UserProfile = () => {
                         required
                     />
                 </div>
+                */}
 
                 {/* Phone Number */}
                 <div className="mb-4">
