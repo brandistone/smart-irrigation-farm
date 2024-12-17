@@ -21,10 +21,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 """
     fullname: '',
-        username: '',
-        password: '',
-        confirm_password: '',
-        phonenumber: '',
+        username: '', #already from user
+        password: '', #already from user
+        confirm_password: '', # Not necessary
+        phonenumber: '', 
         email: '',
         county: '',
 """
