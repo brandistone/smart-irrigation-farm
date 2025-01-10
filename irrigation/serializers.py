@@ -4,7 +4,7 @@ from .models import UserProfile
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'password', 'confirm_password', 'phone', 'fullname', 'date_of_birth', 'country', 'address', 'profile_picture']
+        fields = ['username', 'email', 'password', 'confirm_password', 'phone', 'fullname' ]
         extra_kwargs = {
             'password': {'write_only': True},
             'confirm_password': {'write_only': True},
@@ -26,6 +26,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
         email = data.get('email')
         if UserProfile.objects.filter(email=email).exists():
             raise serializers.ValidationError("A user with this email already exists.")
+        
+        fullname = data.get('fullname')
+        if not fullname:
+            raise serializers.ValidationError("Full name is required.")
+        
+        
+
 
         # Check if the phone number already exists
         phone = data.get('phone')

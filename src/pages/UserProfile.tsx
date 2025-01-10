@@ -12,7 +12,7 @@ const UserProfile = () => {
         //confirm_password: '',
         phonenumber: '',
         email: '',
-        county: '',
+        
     });
 
     const [error, setError] = useState('');
@@ -65,7 +65,7 @@ const UserProfile = () => {
                 //confirm_password: '',
                 phonenumber: '',
                 email: '',
-                county: '',
+                
             });
         } catch (error: any) {
             console.error('Submission error:', error);
